@@ -1,0 +1,11 @@
+const { Schema, default: mongoose } = require("mongoose");
+const commentSchema = new Schema(
+  {
+    content: { type: String, required: true },
+    blogId: { type: Schema.Types.ObjectId, ref: "Blog" },
+    createdBy: { type: Schema.Types.ObjectId, ref: "User" },
+  },
+  { timestamps: true }
+);
+
+exports.Comment = mongoose.model("Comment", commentSchema);
