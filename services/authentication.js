@@ -14,8 +14,13 @@ async function createTokenForUser(user) {
 }
 
 function validateToken(token) {
-  const payload = JWT.verify(token, secret);
-  return payload;
+  try {
+    const payload = JWT.verify(token, secret);
+    return payload;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 }
 
 module.exports = {
